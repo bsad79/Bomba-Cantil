@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7butcvn1yhot"]
+
+[ext_resource type="Script" path="res://Scripts/Intro.gd" id="1_hftnv"]
+[ext_resource type="Texture2D" uid="uid://bj63wcftw24u7" path="res://Images/Zamboss Intro.png" id="1_rif5y"]
+
+[sub_resource type="Animation" id="Animation_okcwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_n3utn"]
+resource_name = "flash"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 3, 1, 3, 0, 4, 2, 4, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mo4e6"]
+_data = {
+"RESET": SubResource("Animation_okcwj"),
+"flash": SubResource("Animation_n3utn")
+}
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hftnv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(5.72222, 5.72222)
+texture = ExtResource("1_rif5y")
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mo4e6")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

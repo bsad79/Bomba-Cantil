@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqjo3djra345"]
+
+[ext_resource type="PackedScene" uid="uid://cpyn6dxy06agq" path="res://Scenes/Level.tscn" id="1_prj4w"]
+[ext_resource type="Script" path="res://Scripts/demo.gd" id="2_rerok"]
+
+[node name="Demo2" instance=ExtResource("1_prj4w")]
+script = ExtResource("2_rerok")
+
+[node name="ColorRect" parent="Control" index="0"]
+z_index = 3

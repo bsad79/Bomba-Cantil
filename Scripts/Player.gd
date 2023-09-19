@@ -79,7 +79,7 @@ func set_life(dmg):
 func _on_golpe_colisao_body_entered(body):
 	if (body.name != "Player"):
 		target = body
-		if (target.life - damage <= 0):
+		if (target.life - (-1 * (target.def - damage)) <= 0):
 			score += body.score
 			pass
 		body.set_life(damage)

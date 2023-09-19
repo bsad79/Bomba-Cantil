@@ -5,10 +5,10 @@ func _ready():
 	blow = get_node("golpe_colisao/Golpe/Sprite2D")
 	timer = get_node("Timer")
 	
-	char_name = "Huguinho"
-	damage = 5
+	char_name = "Zamboss"
+	damage = 20
 	life = 100
-	speed = 150.0
-	score = 100
-	def = 0
+	speed =250.0
+	score = 1000
+	def = 15
 	pass

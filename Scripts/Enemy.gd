@@ -6,6 +6,7 @@ var is_taking_dmg = false
 var target
 var blow
 var body
+var def
 @onready var animation = $AnimationPlayer
 
 func _ready():
@@ -55,7 +56,7 @@ func _on_corpo_colisao_body_entered(body):
 	pass # Replace with function body.
 
 func set_life(dmg):
-	super.set_life(dmg)
+	super.set_life(-1 * (def - dmg))
 	is_taking_dmg = true
 	animation.play("Damage")
 	await animation.animation_finished

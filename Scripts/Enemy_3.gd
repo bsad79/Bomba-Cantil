@@ -10,4 +10,5 @@ func _ready():
 	life = 100
 	speed = 100.0
 	score = 150
+	def = 10
 	pass

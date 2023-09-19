@@ -1,6 +1,6 @@
 extends Level
 
-var enemy_scene = preload("res://Scenes/enemy_1.tscn")
+var boss_scene = preload("res://Scenes/Zamboss.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,17 +8,15 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_timer_timeout():
-	DialogueManager.show_example_dialogue_balloon(load("res://main.dialogue"), "start")
-	#next_lvl = "res://Scenes/Boss_2.tscn"
-	next_lvl = "res://Scenes/Intro.tscn"
+	next_lvl = "res://Scenes/arena.tscn"
 	
 	add_player(94, 581)
 	add_door(1105, 570)
 	add_ui()
-	var enemy = enemy_scene.instantiate()
+	var boss = boss_scene.instantiate()
 	
-	enemy.position = Vector2(1000, 581)
-	add_child(enemy)
+	boss.position = Vector2(1000, 581)
+	add_child(boss)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

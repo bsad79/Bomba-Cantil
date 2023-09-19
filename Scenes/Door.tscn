@@ -12,4 +12,8 @@ script = ExtResource("1_gw1t7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 shape = SubResource("RectangleShape2D_3h16p")
 
+[node name="Timer" type="Timer" parent="Door"]
+one_shot = true
+
 [connection signal="body_entered" from="Door" to="Door" method="_on_body_entered"]
+[connection signal="timeout" from="Door/Timer" to="Door" method="_on_timer_timeout"]
